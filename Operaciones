@@ -1,0 +1,64 @@
+package Joseline;
+/**
+ *
+ * @author ariac
+ */
+public class Operaciones 
+{
+    private Nodo InicioCola,FinalCola;
+    String Cola = "";
+    
+    public Operaciones (){
+        InicioCola = null;
+        FinalCola= null;
+    }
+    
+    public boolean ColaVacia(){
+        if (InicioCola == null){
+        return true;
+        }else{
+        return false;
+        }
+    }
+    
+    public void Insertar (String Informacion){
+        Nodo Nuevo = new Nodo();
+        Nuevo.Informacion = Informacion;
+        Nuevo.Siguiente = null;
+        if (ColaVacia()){
+        InicioCola = Nuevo;
+        FinalCola = Nuevo;
+        }else{
+        FinalCola.Siguiente = Nuevo;
+        FinalCola = Nuevo;
+        }
+    }
+    
+    public void Mostrar(){
+        Nodo Colita = InicioCola;
+        String ColaInvertida = "";
+        while (Colita != null){
+        Cola += Colita.Informacion + " ";
+        Colita = Colita.Siguiente;
+        }
+        String Cad [] = Cola.split(" ");
+        for (int i = Cad.length -1; i>=0; i--){
+            ColaInvertida += " "+ Cad[i];
+        }
+        System.out.println(ColaInvertida);
+        Cola = "";
+    }
+    
+    public void Eliminar(){
+        if (!ColaVacia()){
+            String Informacion = InicioCola.Informacion;
+            if (InicioCola == FinalCola){
+            InicioCola = null;
+            FinalCola = null;
+            }else{
+            InicioCola = InicioCola.Siguiente;
+            }
+        }
+    }
+   
+}
