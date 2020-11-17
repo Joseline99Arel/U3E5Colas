@@ -1,0 +1,56 @@
+package Joseline;
+/**
+ *
+ * @author ariac
+ */
+import java.util.Scanner;
+public class Principal 
+{
+    public static void main (String []args){
+    Scanner entrada = new Scanner (System.in);
+    
+    Operaciones Cola = new Operaciones();
+    
+    int a=1,Respuesta=0;
+    String Resp;
+    
+    while(a==1){
+        System.out.println("¿Que promedio deceas realizar?");
+        System.out.println("1.- Insertar");
+        System.out.println("2.- Mostar");
+        System.out.println("3.- Eliminar");
+        System.out.println("4.- Salir");
+        Respuesta=entrada.nextInt();
+            
+        if(Respuesta>0 && Respuesta<5){
+            switch(Respuesta){
+                case 1: 
+                System.out.println("Por favor introduce un nombre");
+                Resp=entrada.next();
+                Cola.Insertar(Resp);
+                break;
+                case 2: 
+                Cola.Mostrar();
+                break;
+                case 3: 
+                if (!Cola.ColaVacia()){
+                Cola.Eliminar();
+                System.out.println("Eliminacion Existosa");
+                }else{
+                System.out.println("Cola vacia");
+                }
+                break;
+                case 4: 
+                    System.exit(0);
+                break; 
+            }
+            System.out.println("Quieres repetir el proceso 1:Si 2:No");
+            a=entrada.nextInt();
+            }
+            else
+            {
+                System.out.println("El numero que ingresaste esta fuera de las opciones ");
+            }
+        }     
+    }
+}
